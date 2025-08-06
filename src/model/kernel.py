@@ -60,10 +60,10 @@ class Kermut(Kernel):
 
     def forward(self, x1: torch.Tensor, x2: torch.Tensor, **kwargs):
         # Debug tensor shapes
-        print(f"[DEBUG] Kermut kernel - x1 shape: {x1.shape}, x2 shape: {x2.shape}")
-        print(f"[DEBUG] Kermut kernel - self.seq_len: {self.seq_len}")
-        print(f"[DEBUG] Kermut kernel - Expected reshape: (-1, {self.seq_len}, 20)")
-        print(f"[DEBUG] Kermut kernel - x1 total elements: {x1.numel()}")
+#        print(f"[DEBUG] Kermut kernel - x1 shape: {x1.shape}, x2 shape: {x2.shape}")
+#        print(f"[DEBUG] Kermut kernel - self.seq_len: {self.seq_len}")
+#        print(f"[DEBUG] Kermut kernel - Expected reshape: (-1, {self.seq_len}, 20)")
+#        print(f"[DEBUG] Kermut kernel - x1 total elements: {x1.numel()}")
         
         # Reshape inputs
         x1 = x1.view(-1, self.seq_len, 20)

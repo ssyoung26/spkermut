@@ -113,18 +113,18 @@ def main(cfg: DictConfig) -> None:
             if use_mutation_kernel:
                 # [B, 20*seq_len]
                 x_full = x_tokens
-                print(f"[DEBUG] benchmark - x_tokens shape: {x_tokens.shape}")
+#                print(f"[DEBUG] benchmark - x_tokens shape: {x_tokens.shape}")
                 
                 if use_zero_shot:
                     # [B, 20*seq_len + 1]
                     x_full = torch.cat([x_full, zero_shot_full.unsqueeze(-1)], dim=-1)
-                    print(f"[DEBUG] benchmark - after zero-shot concat: {x_full.shape}")
+#                    print(f"[DEBUG] benchmark - after zero-shot concat: {x_full.shape}")
                     
                 if use_global_kernel:
                     # [B, 20*seq_len (+ 1) + emb_dim]
                     x_full = torch.cat([x_full, embeddings], dim=-1)
-                    print(f"[DEBUG] benchmark - after embedding concat: {x_full.shape}")
-                    print(f"[DEBUG] benchmark - embeddings shape: {embeddings.shape}")
+#                    print(f"[DEBUG] benchmark - after embedding concat: {x_full.shape}")
+#                    print(f"[DEBUG] benchmark - embeddings shape: {embeddings.shape}")
                     
             elif use_global_kernel:
                 # [B, emb_dim]

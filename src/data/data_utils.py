@@ -99,10 +99,10 @@ def prepare_gp_kwargs(DMS_id: str, wt_sequence: str, cfg: DictConfig):
         wt_sequence = tokenizer(wt_sequence).squeeze()
         
         # Debug wt_sequence
-        print(f"[DEBUG] prepare_gp_kwargs - DMS_id: {DMS_id}")
-        print(f"[DEBUG] prepare_gp_kwargs - Original wt_sequence length: {len(wt_sequence)}")
-        print(f"[DEBUG] prepare_gp_kwargs - Tokenized wt_sequence shape: {wt_sequence.shape}")
-        print(f"[DEBUG] prepare_gp_kwargs - Expected seq_len: {wt_sequence.shape[0] // 20}")
+#        print(f"[DEBUG] prepare_gp_kwargs - DMS_id: {DMS_id}")
+#        print(f"[DEBUG] prepare_gp_kwargs - Original wt_sequence length: {len(wt_sequence)}")
+#        print(f"[DEBUG] prepare_gp_kwargs - Tokenized wt_sequence shape: {wt_sequence.shape}")
+#        print(f"[DEBUG] prepare_gp_kwargs - Expected seq_len: {wt_sequence.shape[0] // 20}")
         
         if cfg.gp.mutation_kernel.conditional_probs_method == "ProteinMPNN":
             conditional_probs = np.load(
