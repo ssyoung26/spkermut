@@ -72,27 +72,27 @@ class ExactGPKermut(gpytorch.models.ExactGP):
 
     def forward(self, x):
         # Debug tensor shapes
-        print(f"[DEBUG] Input tensor x shape: {x.shape}")
-        print(f"[DEBUG] embedding_dim: {self.embedding_dim}")
+#        print(f"[DEBUG] Input tensor x shape: {x.shape}")
+#        print(f"[DEBUG] embedding_dim: {self.embedding_dim}")
         
         # Unpack input tensor
         if self.use_global_kernel:
             x_embed = x[:, -self.embedding_dim :]
             x = x[:, : -self.embedding_dim]
-            print(f"[DEBUG] After unpacking - x_embed shape: {x_embed.shape}, x shape: {x.shape}")
+#            print(f"[DEBUG] After unpacking - x_embed shape: {x_embed.shape}, x shape: {x.shape}")
 
         if self.use_zero_shot:
             zero_shot = x[:, -1]
             x_oh = x[:, :-1]
             mean_x = self.mean_module(x_oh) + self.zero_shot_scale * zero_shot
-            print(f"[DEBUG] With zero-shot - x_oh shape: {x_oh.shape}")
+#            print(f"[DEBUG] With zero-shot - x_oh shape: {x_oh.shape}")
         else:
             x_oh = x
             mean_x = self.mean_module(x_oh)
-            print(f"[DEBUG] Without zero-shot - x_oh shape: {x_oh.shape}")
+#            print(f"[DEBUG] Without zero-shot - x_oh shape: {x_oh.shape}")
 
         # Kermut kernel
-        print(f"[DEBUG] Passing to Kermut kernel: x_oh shape {x_oh.shape}")
+#        print(f"[DEBUG] Passing to Kermut kernel: x_oh shape {x_oh.shape}")
         covar_x = self.k_1(x_oh)
 
         if self.use_global_kernel:

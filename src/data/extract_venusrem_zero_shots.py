@@ -10,7 +10,6 @@ from pathlib import Path
 import subprocess
 import tempfile
 
-# Import the VenusREMFitness class
 from venusrem_fitness import VenusREMFitness
 
 
