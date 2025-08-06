@@ -1,3 +1,6 @@
+# This file contains the logic for running VenusREM predictions alongside the Kermut kernel. Configurations are set with hydra.
+# Actual file to run the script should be run from src/experiment/proteingym_benchmark.py
+
 from pathlib import Path
 
 import hydra

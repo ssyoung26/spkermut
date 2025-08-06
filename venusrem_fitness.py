@@ -1,3 +1,6 @@
+# This file loads the VenusREM model and simplifies `compute_fitness.py` from the original VenusREM paper.
+# This omits the structural alignment module as testing shows that performance is best without it.
+
 import torch
 import os
 import pandas as pd

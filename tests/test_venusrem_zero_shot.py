@@ -1,4 +1,4 @@
-"""Tests for VenusREM zero-shot prediction functionality"""
+# Tests for VenusREM zero-shot prediction functionality
 
 import unittest
 import tempfile

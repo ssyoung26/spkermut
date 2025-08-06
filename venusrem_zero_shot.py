@@ -1,3 +1,5 @@
+# This script is called by `run_venusrem_zero_shot.py` to generate zero shot scores for ProteinGym sequences.
+
 import os
 import pandas as pd
 import numpy as np

@@ -1,3 +1,7 @@
+# This script can be run to generate zero shot scores for each protein sequence in the ProteinGym database.
+# Disclaimer that tests may not all pass, but latest version of this script can still successfully generate 
+# zero shot scores for any given sequence.
+
 #!/usr/bin/env python3
 """Script to run VenusREM zero-shot tests and generate predictions"""
 

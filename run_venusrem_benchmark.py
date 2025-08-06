@@ -1,3 +1,6 @@
+# This file can be used to perform the benchmark specifically for VenusREM.
+# Similar script can be run for ESM2 in the original Kermut paper.
+
 #!/usr/bin/env python3
 """Run Kermut benchmark with VenusREM embeddings"""
 

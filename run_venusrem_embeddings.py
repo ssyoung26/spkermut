@@ -1,3 +1,6 @@
+# This script can be run to generate embeddings with VenusREM. For example, new embeddings can be generated with a different alpha parameter.
+# Change configuration as desired in the configuration files.
+
 #!/usr/bin/env python3
 """
 Script to run VenusREM embeddings extraction for ProteinGym datasets.

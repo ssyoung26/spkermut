@@ -1,0 +1,10 @@
+# SP Kermut
+
+This is a wrapper repository on top of [Kermut](https://github.com/petergroth/kermut) to predict protein fitness using a Gaussian Process. Predictions are enhanced by replacing the ESM2 module with the top-scoring VenusREM model embeddings and zero shot scores.
+
+New scripts in this repository are the following:
+  - `venusrem_fitness.py`
+  - `venusrem_zero_shot.py`
+  - `run_venusrem_embeddings.py`
+  - `run_venusrem_zero_shot.py`
+  - `configs/proteingym_venusrem.yaml`
