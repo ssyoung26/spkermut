@@ -1,0 +1,30 @@
+defaults:
+  - gp: kermut
+  - data: paths
+  - _self_
+  - override hydra/job_logging: disabled  # Prevents creation of .log file from Hydra
+
+dataset: benchmark
+cv_scheme: null
+single:
+  id: null
+
+# Add missing parameters
+split_method: fold_random_5
+use_gpu: true
+progress_bar: true
+standardize: true
+overwrite: true
+seed: 42
+
+# Override to use VenusREM embeddings with Kermut
+gp:
+  embedding_type: VenusREM  # Use VenusREM embeddings instead of ESM2
+  embedding_dim: 768  # VenusREM model hidden dimension
+  use_zero_shot: true  # Enable zero-shot predictions
+  use_mutation_kernel: true  # Use Kermut mutation kernel
+  use_global_kernel: true  # Use global kernel with VenusREM embeddings
+
+data:
+  embedding:
+    mode: singles 

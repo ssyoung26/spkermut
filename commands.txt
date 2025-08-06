@@ -1,0 +1,6 @@
+#  
+
+python src/experiments/proteingym_benchmark.py --multirun \
+    dataset=benchmark \
+    +cv_scheme=fold_random_5,fold_modulo_5,fold_contiguous_5 \
+    +kernel=kermut

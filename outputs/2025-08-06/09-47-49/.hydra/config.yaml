@@ -1,0 +1,67 @@
+gp:
+  name: kermut
+  use_mutation_kernel: false
+  use_global_kernel: true
+  embedding_type: VenusREM
+  embedding_dim: 2048
+  mutation_kernel:
+    model:
+      _target_: src.model.kernel.Kermut
+    use_distances: true
+    conditional_probs_method: ProteinMPNN
+    tokenizer:
+      _target_: src.data.data_utils.Tokenizer
+      flatten: true
+    kernel_params:
+      h_scale: 1.0
+      h_lengthscale: 0.1
+      d_lengthscale: 0.1
+      p_lengthscale: 0.1
+  gp_model:
+    _target_: src.model.gp.ExactGPKermut
+  use_zero_shot: false
+  zero_shot_method: ESM2
+  use_prior: true
+  noise_prior_scale: 0.1
+  optim:
+    n_steps: 150
+    lr: 0.1
+data:
+  embedding:
+    model_path: models/venusrem_model
+    mode: singles
+    toks_per_batch: 64
+    model_name: AI4Protein/ProSST-2048
+    alpha: 0.7
+    logit_mode: aa_seq_aln
+  data_dir: data
+  paths:
+    reference_file: data/DMS_substitutions.csv
+    DMS_input_folder: ${data.data_dir}/cv_folds_singles_substitutions
+    conditional_probs: ${data.data_dir}/conditional_probs/ProteinMPNN
+    raw_conditional_probs: ${data.data_dir}/conditional_probs/raw_ProteinMPNN_outputs
+    embeddings_singles: ${data.data_dir}/embeddings/substitutions_singles/ESM2
+    embeddings_multiples: ${data.data_dir}/embeddings/substitutions_multiples/ESM2
+    venusrem_embeddings_singles: ${data.data_dir}/embeddings/substitutions_singles/VenusREM
+    venusrem_embeddings_multiples: ${data.data_dir}/embeddings/substitutions_multiples/VenusREM
+    pdbs: ${data.data_dir}/structures/pdbs
+    coords: ${data.data_dir}/structures/coords
+    zero_shot: ${data.data_dir}/zero_shot_fitness_predictions
+    output_folder: outputs
+    calibration_metrics: results/calibration_metrics
+    merged_scores: results/merged_scores
+    processed_scores: results/processed_scores
+  test_index: -1
+  standardize: true
+  sequence_col: mutated_sequence
+  target_col: DMS_score
+dataset: benchmark
+cv_scheme: null
+single:
+  id: null
+split_method: fold_random_5
+use_gpu: true
+progress_bar: true
+standardize: true
+overwrite: false
+seed: 42

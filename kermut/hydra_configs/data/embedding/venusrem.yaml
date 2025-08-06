@@ -1,0 +1,6 @@
+model_path: models/venusrem_model
+mode: singles
+toks_per_batch: 32
+model_name: AI4Protein/ProSST-2048
+alpha: 0.7
+logit_mode: aa_seq_aln 
