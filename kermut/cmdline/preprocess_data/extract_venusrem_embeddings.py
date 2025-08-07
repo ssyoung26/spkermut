@@ -13,7 +13,6 @@ from omegaconf import DictConfig
 from tqdm import tqdm
 import numpy as np
 
-# Import VenusREM model
 from venusrem_fitness import VenusREMFitness
 
 
@@ -204,7 +203,7 @@ def extract_venusrem_embeddings(cfg: DictConfig) -> None:
     # Set PyTorch to use mixed precision for faster computation on GPU
     if use_gpu:
         torch.backends.cudnn.benchmark = True  # Optimize for fixed input sizes
-        torch.backends.cuda.matmul.allow_tf32 = True  # Use TensorFloat-32 for faster computation
+        torch.backends.cuda.matmul.allow_tf32 = True
         torch.backends.cudnn.allow_tf32 = True
     
     try:
@@ -225,7 +224,7 @@ def extract_venusrem_embeddings(cfg: DictConfig) -> None:
         print(f"Error initializing VenusREM model: {e}")
         return
 
-    # Prepare arguments for data preparation (CPU-only work)
+    # Prepare arguments for data preparation
     prepare_args = [
         (DMS_id, df_ref, DMS_dir)
         for DMS_id in df_ref["DMS_id"]
@@ -236,7 +235,7 @@ def extract_venusrem_embeddings(cfg: DictConfig) -> None:
     n_processes = min(n_processes, cpu_count() - 1)  # Ensure we don't exceed available CPUs
     print(f"Using {n_processes} processes for data preparation")
     
-    # Prepare all dataset data in parallel (CPU-only work)
+    # Prepare all dataset data in parallel
     print("Preparing dataset data in parallel...")
     try:
         with Pool(processes=n_processes) as pool:
@@ -319,7 +318,7 @@ def extract_venusrem_embeddings(cfg: DictConfig) -> None:
                     batch_mutants = mutants[batch_start:batch_end]
                     
                     try:
-                        # Process entire batch at once for better GPU utilization
+                        # Process entire batch at once
                         batch_hidden = []
                         for seq in batch_sequences:
                             # Get hidden representations from VenusREM model
@@ -383,7 +382,6 @@ def extract_venusrem_embeddings(cfg: DictConfig) -> None:
                 print(f"Error processing {DMS_id}: {e}")
                 failed += 1
     
-    # Print summary
     print(f"\nProcessing complete!")
     print(f"Successful: {successful}")
     print(f"Failed: {failed}")
