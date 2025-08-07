@@ -1,10 +1,6 @@
-# Kermut
-
-This is the official code repository for the paper _Kermut: Composite kernel regression for protein variant effects_ ([preprint](https://www.biorxiv.org/content/10.1101/2024.05.28.596219v1)).
-
-
-## Overview
-Kermut is a carefully constructed Gaussian process which obtains state-of-the-art performance for protein property prediction on ProteinGym's supervised substitution benchmark while providing meaningful overall calibration.
+# SP Kermut
+"Kermut is a carefully constructed Gaussian process which obtains state-of-the-art performance for protein property prediction on ProteinGym's supervised substitution benchmark while providing meaningful overall calibration."
+- Original Kermut paper
 
 ### Results on ProteinGym 
 
@@ -18,6 +14,7 @@ Below is a table showing the aggregated Spearman scores per cross validation sch
 | Kermut     | 0.655            | 0.744                          | 0.631                          | 0.591                              |
 | Kermut (old splits)     | 0.662            | 0.744                          | 0.633                          | 0.610                              |
 |ProteinNPT (old splits)|  0.613 | 0.730 | 0.564 | 0.547 |
+|[New] SP Kermut | - | 0.7607 | 0.6428 | - |
 
 Below is a table showing the aggregated Spearman scores per functional category.
 
