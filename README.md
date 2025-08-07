@@ -266,6 +266,7 @@ python run_venusrem_zero_shot.py
 
 # Run benchmark on proteingym
 python run_venusrem_benchmark.py --config-name proteingym_venusrem
+# Note: the --config-name proteingym_venusrem is optional, but that is what the script calls
 ```
 
 To reproduce the results from the original Kermut github, run:
@@ -276,7 +277,16 @@ python proteingym_benchmark.py --multirun \
     kernel=kermut
 ```
 
-Finally, the last script will calculate spearman coefficients accessing the `results/` directory:
+Finally, the last script will calculate spearman coefficients from the VenusREM Kermut model accessing the `results/` directory (if there is no folder from `run_venusrem_benchmark`, this command will fail):
 ```
 python calculate_spearman.py
+```
+
+If the above command does not work for any reason, you can also try:
+```
+# The extra arguments are optional but can be applied to the original Kermut data
+python kermut/cmdline/process_results/process_model_scores.py \
+  model_names=[ExactGPKermut] \
+  dataset=benchmark \
+  overwrite=true
 ```

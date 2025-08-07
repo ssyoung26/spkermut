@@ -34,6 +34,6 @@ python proteingym_benchmark.py --multirun \
 
 Finally, the last script will calculate spearman coefficients accessing the `results/` directory:
 ```
-python calculate_spearman.py
+python kermut/cmdline/process_results/process_model_scores.py
 ```
 
