@@ -47,7 +47,7 @@ unzip predictions_old_split.zip && rm predictions_old_split.zip
 After cloning the repository, the environment can be installed via
 
 ```bash
-conda env create -f environment.yml
+conda env create -f environment_spkermut.yml
 conda activate kermut_env
 pip install -e .
 ```

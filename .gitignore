@@ -30,9 +30,10 @@ results/predictions_old_split/**/*.csv
 !results_base_kermut/summary/**/*.csv
 !results_base_kermut/summary_old_split/**/*.csv
 !results_base_kermut/ablation_summary/**/*.csv
-!results_base_kermut/*.csv
+#!results_base_kermut/*.csv
 !results_base_kermut/calibration_metrics/*.csv
 !data/constants.json
+results_base_kermut/*.csv
 
 # Housekeeping
 logs/
